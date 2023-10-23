@@ -73,4 +73,9 @@ public abstract class SparkExpressionTreeVisitor<R, C>
     {
         return visitLiteral(node, context);
     }
+
+    protected R visitTimeTravelExpression(TimeTravelExpression node, C context)
+    {
+        return visitTimeTravelExpression(node, context);
+    }
 }
