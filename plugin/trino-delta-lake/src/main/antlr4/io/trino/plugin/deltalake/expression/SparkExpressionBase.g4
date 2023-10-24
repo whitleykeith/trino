@@ -48,6 +48,11 @@ valueExpression
     | left=valueExpression operator=(AMPERSAND | CIRCUMFLEX) right=valueExpression      #arithmeticBinary
     ;
 
+timeTravelExpression
+    : left=identifier AS OF right=string                #timestampVersion
+    | left=identifier AS OF right=number                #numericalVersion
+    ;
+
 primaryExpression
     : number                                            #numericLiteral
     | booleanValue                                      #booleanLiteral
@@ -86,6 +91,8 @@ OR: 'OR';
 FALSE: 'FALSE';
 TRUE: 'TRUE';
 NULL: 'NULL';
+AS: 'AS';
+OF: 'OF';
 
 EQ: '=';
 NEQ: '<>' | '!=';

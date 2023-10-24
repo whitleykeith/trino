@@ -97,5 +97,14 @@ public final class SparkExpressionConverter
         {
             return "NULL";
         }
+
+        @Override
+        protected String visitTimeTravelExpression(TimeTravelExpression node, Void context)
+        {
+            return "(%s %s %s)".formatted(
+                process(node.getLeft(), context),
+                node.getOperator().getValue(),
+                process(node.getRight(), context));
+        }
     }
 }

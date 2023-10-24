@@ -151,6 +151,12 @@ public class TestSparkExpressions
     }
 
     @Test
+    public void testTimeTravel()
+    {
+        assertExpressionTranslates("a AS OF 123", "\"a\" AS OF \"123\"");
+    }
+
+    @Test
     public void testInvalidNotBoolean()
     {
         assertParseFailure("'Spark' || 'SQL'");

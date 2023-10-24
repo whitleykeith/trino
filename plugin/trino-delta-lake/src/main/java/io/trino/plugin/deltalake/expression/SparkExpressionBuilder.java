@@ -289,4 +289,12 @@ public class SparkExpressionBuilder
         }
         throw new UnsupportedOperationException(format("Cannot combine %s and %s", aggregate, nextResult));
     }
+
+    @Override
+    protected Object visitTimeTravelExpression(SparkExpressionBaseParser.TimeTravelExpressionContext context)
+    {
+        return new TimeTravelExpression(
+                getTimeTravelOperator(context.operator),
+                (SparkExpression) visit(context.right));
+    }
 }
